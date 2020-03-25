@@ -1,4 +1,4 @@
-import pino from 'pino';
+import pino from 'pino'
 
 const l = pino({
   name: process.env.APP_ID,
@@ -6,6 +6,6 @@ const l = pino({
     process.env.NODE_ENV === 'test'
       ? process.env.LOG_LEVEL_TEST
       : process.env.LOG_LEVEL,
-});
+})
 
-export default l;
+export default l
