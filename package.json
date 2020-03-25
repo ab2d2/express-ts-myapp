@@ -52,7 +52,7 @@
     }
   },
   "lint-staged": {
-    "{server, test}": [
+    "{server,test}/**/*.ts": [
       "eslint -c .eslintrc.js '{server, test}/**/*.{js,ts}' --quiet --fix",
       "git add"
     ]
