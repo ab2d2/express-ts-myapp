@@ -19,16 +19,27 @@ produces:
 definitions:
   ExampleBody:
     type: object
-    title: example
+    title: test
     required:
       - name
     properties:
       name:
         type: string
-        example: no_stress
+      another_one:
+        type: string
+  anotherBody:
+    type: object
+    title: resource2
+    required:
+      - name
+    properties:
+      name:
+        type: string
+      value:
+        type: boolean
 
 paths:
-  /examples:
+  /testing:
     get:
       tags:
         - Examples
@@ -50,22 +61,45 @@ paths:
       responses:
         200:
           description: Returns all examples
-
-  /examples/{id}:
-    get:
+  
+  /resource2:
+     get:
       tags:
         - Examples
-      parameters:
-        - name: id
-          in: path
-          required: true
-          description: The id of the example to retrieve
-          type: integer
+      description: Fetch all resource 2s
       responses:
         200:
-          description: Return the example with the specified id
-        404:
-          description: Example not found
+          description: Returns all resources 2s
+     post:
+      tags:
+        - Examples
+      description: Create a new resource2
+      parameters:
+        - name: example
+          in: body
+          description: an example
+          required: true
+          schema: 
+            $ref: "#/definitions/anotherBody"
+      responses:
+        200:
+          description: Returns all examples
+
+  /testing/{id}:
+     get:
+       tags:
+       - Examples
+     parameters:
+       - name: id
+         in: path
+         required: true
+         description: The id of the example to retrieve
+         type: integer
+     responses:
+       200:
+         description: Return the example with the specified id
+       404:
+         description: Example not found
 
   /spec:
     get:
