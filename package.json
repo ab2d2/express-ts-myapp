@@ -47,13 +47,13 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm test",
+      "pre-commit": "lint-staged",
       "pre-push": "npm test"
     }
   },
   "lint-staged": {
-    "*.ts": [
-      "npm run lint:fix",
+    "*": [
+      "eslint -c .eslintrc.js '{server, test}/**/*.{js,ts}' --quiet --fix",
       "git add"
     ]
   }
