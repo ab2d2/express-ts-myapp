@@ -100,7 +100,15 @@ paths:
          description: Return the example with the specified id
        404:
          description: Example not found
-
+  
+  /token: 
+    get:
+      tags:
+        - Examples
+      description: Fetch Users
+      responses:
+        200:
+          description: Returns users from Azure AD
   /spec:
     get:
       tags:
